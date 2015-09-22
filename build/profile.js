@@ -6,20 +6,9 @@ var Profile = React.createClass({
 		    profileData: React.PropTypes.object
 	  },
 
-    getInitialState: function() {
-        return {
-            profileObj: null
-        }
-    },
-
-    componentDidMount: function() {
-        console.log("mounted");
-        this.setState({profileObj: this.props.profileData});
-    },
-
     getProfileDetails: function() {
         console.log("getProfileDetails");
-        var profile = this.state.profileObj;
+        var profile = this.props.profileData;
         // console.log(profile);
         return  React.createElement("div", null, 
                   React.createElement("div", {className: "profileImg"}, React.createElement("img", {src: profile.picture, width: "200"})), 
@@ -38,7 +27,7 @@ var Profile = React.createClass({
     },
 
     render: function() {
-        if (this.state.profileObj !== null) {
+        if (this.props.profileData !== null) {
             console.log("request getProfileDetails");
             return (
                 React.createElement("div", {className: "profile"}, this.getProfileDetails())

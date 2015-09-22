@@ -21,10 +21,12 @@ var Resume = React.createClass({
         if (this.state.jsonObj) {
           // console.log(this.state.jsonObj.basics);
           var profile = this.state.jsonObj.basics;
+          var work = this.state.jsonObj.work;
           return (
               React.createElement("div", null, 
                 React.createElement(Profile, {profileData: profile}), 
-                React.createElement(About, {aboutData: profile.summary})
+                React.createElement(About, {aboutData: profile.summary}), 
+                React.createElement(Work, {workData: work})
               )
           )
         }else{
