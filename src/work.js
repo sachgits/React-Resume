@@ -10,14 +10,19 @@ var Work = React.createClass({
   },
 
   getWorkExperience: function() {
-    console.log("getWorkExperience");
-    console.log(this.props.workData);
-    return <div></div>
+    // console.log("getWorkExperience");
+    // console.log(this.props.workData);
+    var workItems = [];
+    $.each(this.props.workData, function(i, val) {
+      console.log(val);
+      workItems.push(<WorkItem workItemData={val}/>);
+    });
+    return workItems;
   },
 
   render: function() {
       return (
-          <div className="work">{this.getWorkExperience()}</div>
+          <div className="work"><h2>Work experience</h2>{this.getWorkExperience()}</div>
       )
   }
 

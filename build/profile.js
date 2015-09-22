@@ -7,7 +7,7 @@ var Profile = React.createClass({
 	  },
 
     getProfileDetails: function() {
-        console.log("getProfileDetails");
+        // console.log("getProfileDetails");
         var profile = this.props.profileData;
         // console.log(profile);
         return  React.createElement("div", null, 
@@ -28,7 +28,7 @@ var Profile = React.createClass({
 
     render: function() {
         if (this.props.profileData !== null) {
-            console.log("request getProfileDetails");
+            // console.log("request getProfileDetails");
             return (
                 React.createElement("div", {className: "profile"}, this.getProfileDetails())
             )

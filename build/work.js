@@ -10,14 +10,19 @@ var Work = React.createClass({
   },
 
   getWorkExperience: function() {
-    console.log("getWorkExperience");
-    console.log(this.props.workData);
-    return React.createElement("div", null)
+    // console.log("getWorkExperience");
+    // console.log(this.props.workData);
+    var workItems = [];
+    $.each(this.props.workData, function(i, val) {
+      console.log(val);
+      workItems.push(React.createElement(WorkItem, {workItemData: val}));
+    });
+    return workItems;
   },
 
   render: function() {
       return (
-          React.createElement("div", {className: "work"}, this.getWorkExperience())
+          React.createElement("div", {className: "work"}, React.createElement("h2", null, "Work experience"), this.getWorkExperience())
       )
   }
 
