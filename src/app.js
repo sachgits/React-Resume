@@ -10,22 +10,22 @@ var Resume = React.createClass({
 
     componentDidMount: function() {
   		$.get(this.props.source, function(result) {
-  			// console.log(result);
         if (this.isMounted()) {
-    			this.setState({jsonObj: result});
+    			this.setState({jsonObj: JSON.parse(result)});
         }
   		}.bind(this));
   	},
 
     render: function() {
         if (this.state.jsonObj) {
-          // console.log(this.state.jsonObj.basics);
+          console.log(this.state.jsonObj.basics);
           var profile = this.state.jsonObj.basics;
+          var about = profile.summary;
           var work = this.state.jsonObj.work;
           return (
               <div>
                 <Profile profileData={profile} />
-                <About aboutData={profile.summary} />
+                <About aboutData={about} />
                 <Work workData={work} />
               </div>
           )
