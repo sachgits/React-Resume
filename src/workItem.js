@@ -9,15 +9,14 @@ var WorkItem = React.createClass({
   getWorkDates: function() {
     var startdate = moment(this.props.workItemData.startDate).format("MMM, YYYY");
     var enddate;
-    console.log(this.props.workItemData.endDate);
-    if (this.props.workItemData.endDate !== '' && this.props.workItemData.endDate !== undefined) {
+    if (this.props.workItemData.endDate !== "") {
+      console.log(this.props.workItemData.endDate);
       enddate = moment(this.props.workItemData.endDate).format("MMM, YYYY");
+      console.log('enddate '+enddate)
+    }else{
+      enddate = "Present";
     }
-    console.log(enddate);
-    // if (enddate === '') {
-    //   console.log('date empty')
-    //   enddate = moment().format("MMM, YYYY");
-    // }
+    
     return <span class="startdate">{startdate} - {enddate}</span>
   },
 

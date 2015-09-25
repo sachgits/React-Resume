@@ -6,15 +6,12 @@ var Work = React.createClass({
       workData: React.PropTypes.object
   },
 
-  componentDidMount: function() {
-  },
-
   getWorkExperience: function() {
     // console.log("getWorkExperience");
     // console.log(this.props.workData);
     var workItems = [];
     $.each(this.props.workData, function(i, val) {
-      console.log(val);
+      // console.log(val);
       workItems.push(<WorkItem workItemData={val}/>);
     });
     return workItems;

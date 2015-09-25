@@ -18,7 +18,7 @@ var Resume = React.createClass({
 
     render: function() {
         if (this.state.jsonObj) {
-          console.log(this.state.jsonObj.basics);
+          // console.log(this.state.jsonObj.basics);
           var profile = this.state.jsonObj.basics;
           var about = profile.summary;
           var work = this.state.jsonObj.work;
