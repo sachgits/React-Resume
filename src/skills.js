@@ -6,13 +6,19 @@ var Skills = React.createClass({
       skillsData: React.PropTypes.object
   },
 
+  componentWillMount() {
+    this.setState({'keywords':this.props.skillsData[0].keywords});
+  },
+
   render: function() {
-  	getEducation = 	this.props.skillsData.map(function(item) {
-  		return <li>{item.keywords}</li>
-  	});
-	return (
-	  <div className="skills"><h2>Skills</h2><ul>{getSkills}</ul></div>
-	)
+    
+    var getSkills = this.state.keywords.map(function(item) {
+      return (<li>{item}</li>)
+    });
+
+  	return (
+  	  <div className="skills"><h2>Skills</h2><ul>{getSkills}</ul></div>
+  	)
   }
 
 });

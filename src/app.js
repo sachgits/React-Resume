@@ -1,6 +1,6 @@
 var Resume = React.createClass({
 
-    displayName: "App",
+    displayName: "Resume",
 
     getInitialState: function() {
         return {
@@ -9,9 +9,10 @@ var Resume = React.createClass({
     },
 
     componentDidMount: function() {
-  		$.get(this.props.source, function(result) {
+      $.get(this.props.source, function(result) {
         if (this.isMounted()) {
-    			this.setState({jsonObj: JSON.parse(result)});
+    			// this.setState({jsonObj: JSON.parse(result)});
+    			this.setState({jsonObj: result});
         }
   		}.bind(this));
   	},
@@ -40,6 +41,6 @@ var Resume = React.createClass({
 });
 
 React.render(
-  <Resume source={resume.json} />,
+  <Resume source="resume.json" />,
   document.getElementById('reactjson')
 );

@@ -2,26 +2,26 @@
 
 var About = React.createClass({
 
-  displayName: "About",
+    displayName: "About",
 
-  propTypes: {
-    aboutData: React.PropTypes.object
-  },
+    propTypes: {
+        aboutData: React.PropTypes.object
+    },
 
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "about" },
-      this.props.aboutData
-    );
-  }
+    render: function render() {
+        return React.createElement(
+            "div",
+            { className: "about" },
+            this.props.aboutData
+        );
+    }
 
 });
 "use strict";
 
 var Resume = React.createClass({
 
-    displayName: "App",
+    displayName: "Resume",
 
     getInitialState: function getInitialState() {
         return {
@@ -32,7 +32,8 @@ var Resume = React.createClass({
     componentDidMount: function componentDidMount() {
         $.get(this.props.source, (function (result) {
             if (this.isMounted()) {
-                this.setState({ jsonObj: JSON.parse(result) });
+                // this.setState({jsonObj: JSON.parse(result)});
+                this.setState({ jsonObj: result });
             }
         }).bind(this));
     },
@@ -64,7 +65,7 @@ var Resume = React.createClass({
     }
 });
 
-React.render(React.createElement(Resume, { source: resume.json }), document.getElementById('reactjson'));
+React.render(React.createElement(Resume, { source: "resume.json" }), document.getElementById('reactjson'));
 "use strict";
 
 var Education = React.createClass({
@@ -76,7 +77,7 @@ var Education = React.createClass({
   },
 
   render: function render() {
-    getEducation = this.props.educationData.map(function (item) {
+    var getEducation = this.props.educationData.map(function (item) {
       var startdate = moment(item.startDate).format("MMM, YYYY");
       var enddate = moment(item.endDate).format("MMM, YYYY");
       return React.createElement(
@@ -224,14 +225,20 @@ var Skills = React.createClass({
     skillsData: React.PropTypes.object
   },
 
+  componentWillMount: function componentWillMount() {
+    this.setState({ 'keywords': this.props.skillsData[0].keywords });
+  },
+
   render: function render() {
-    getEducation = this.props.skillsData.map(function (item) {
+
+    var getSkills = this.state.keywords.map(function (item) {
       return React.createElement(
         "li",
         null,
-        item.keywords
+        item
       );
     });
+
     return React.createElement(
       "div",
       { className: "skills" },
@@ -298,9 +305,7 @@ var WorkItem = React.createClass({
     var startdate = moment(this.props.workItemData.startDate).format("MMM, YYYY");
     var enddate;
     if (this.props.workItemData.endDate !== "") {
-      console.log(this.props.workItemData.endDate);
       enddate = moment(this.props.workItemData.endDate).format("MMM, YYYY");
-      console.log('enddate ' + enddate);
     } else {
       enddate = "Present";
     }

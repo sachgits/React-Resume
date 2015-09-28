@@ -10,13 +10,11 @@ var WorkItem = React.createClass({
     var startdate = moment(this.props.workItemData.startDate).format("MMM, YYYY");
     var enddate;
     if (this.props.workItemData.endDate !== "") {
-      console.log(this.props.workItemData.endDate);
       enddate = moment(this.props.workItemData.endDate).format("MMM, YYYY");
-      console.log('enddate '+enddate)
     }else{
       enddate = "Present";
     }
-    
+
     return <span class="startdate">{startdate} - {enddate}</span>
   },
 
