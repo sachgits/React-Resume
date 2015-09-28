@@ -43,12 +43,16 @@ var Resume = React.createClass({
             var profile = this.state.jsonObj.basics;
             var about = profile.summary;
             var work = this.state.jsonObj.work;
+            var education = this.state.jsonObj.education;
+            var skills = this.state.jsonObj.skills;
             return React.createElement(
                 "div",
                 null,
                 React.createElement(Profile, { profileData: profile }),
                 React.createElement(About, { aboutData: about }),
-                React.createElement(Work, { workData: work })
+                React.createElement(Work, { workData: work }),
+                React.createElement(Education, { educationData: education }),
+                React.createElement(Skills, { skillsData: skills })
             );
         } else {
             return React.createElement(
@@ -60,7 +64,59 @@ var Resume = React.createClass({
     }
 });
 
-React.render(React.createElement(Resume, { source: "resume.json" }), document.getElementById('reactjson'));
+React.render(React.createElement(Resume, { source: resume.json }), document.getElementById('reactjson'));
+"use strict";
+
+var Education = React.createClass({
+
+  displayName: "Education",
+
+  propTypes: {
+    educationData: React.PropTypes.object
+  },
+
+  render: function render() {
+    getEducation = this.props.educationData.map(function (item) {
+      var startdate = moment(item.startDate).format("MMM, YYYY");
+      var enddate = moment(item.endDate).format("MMM, YYYY");
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h3",
+          null,
+          item.studyType,
+          " ",
+          item.area
+        ),
+        React.createElement(
+          "h4",
+          null,
+          item.institution
+        ),
+        React.createElement(
+          "p",
+          null,
+          "Studied: ",
+          startdate,
+          " - ",
+          enddate
+        )
+      );
+    });
+    return React.createElement(
+      "div",
+      { className: "education" },
+      React.createElement(
+        "h2",
+        null,
+        "Education"
+      ),
+      getEducation
+    );
+  }
+
+});
 "use strict";
 
 var Profile = React.createClass({
@@ -157,6 +213,41 @@ var Profile = React.createClass({
             );
         }
     }
+});
+"use strict";
+
+var Skills = React.createClass({
+
+  displayName: "Skills",
+
+  propTypes: {
+    skillsData: React.PropTypes.object
+  },
+
+  render: function render() {
+    getEducation = this.props.skillsData.map(function (item) {
+      return React.createElement(
+        "li",
+        null,
+        item.keywords
+      );
+    });
+    return React.createElement(
+      "div",
+      { className: "skills" },
+      React.createElement(
+        "h2",
+        null,
+        "Skills"
+      ),
+      React.createElement(
+        "ul",
+        null,
+        getSkills
+      )
+    );
+  }
+
 });
 "use strict";
 
