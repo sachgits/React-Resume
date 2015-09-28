@@ -11,13 +11,13 @@ var Skills = React.createClass({
   },
 
   render: function() {
-    
+
     var getSkills = this.state.keywords.map(function(item) {
-      return (<li>{item}</li>)
+      return (<li><span className="label label-success">{item}</span></li>)
     });
 
   	return (
-  	  <div className="skills"><h2>Skills</h2><ul>{getSkills}</ul></div>
+  	  <div className="skills"><h2>Skills</h2><ul className="skills-list list-inline">{getSkills}</ul></div>
   	)
   }
 

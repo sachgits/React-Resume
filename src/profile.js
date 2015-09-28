@@ -11,17 +11,18 @@ var Profile = React.createClass({
         var profile = this.props.profileData;
         // console.log(profile);
         return  <div>
-                  <div className="profileImg"><img src={profile.picture} width="200" /></div>
-                  <h1>{profile.name}</h1>
-                  <h2>{profile.label}</h2>
-                  <ul>
-                    <li>{profile.location.city}, {profile.location.region}, {profile.location.countryCode}</li>
-                    <li>{profile.phone}</li>
-                    <li>{profile.email}</li>
+                  <div className="profileImg"><img className="img-circle center-block" src={profile.picture} width="200" /></div>
+                  <h1 className="text-center">{profile.name}</h1>
+                  <h2 className="text-center">{profile.label}</h2>
+                  <div className="divider"></div>
+                  <ul className="list-unstyled contact-links">
+                    <li><i className="fa fa-lg fa-location-arrow"></i>{profile.location.city}, {profile.location.region}, {profile.location.countryCode}</li>
+                    <li><i className="fa fa-lg fa-envelope"></i>{profile.email}</li>
                   </ul>
-                  <ul className="profileLinks">
-                    <li><a href={'https://twitter.com/'+profile.profiles[0].username}>{profile.profiles[0].network}</a></li>
-                    <li><a href={'https://github.com/'+profile.profiles[1].username}>{profile.profiles[1].network}</a></li>
+                  <div className="divider"></div>
+                  <ul className="profileLinks list-inline">
+                    <li><a className="fa fa-twitter fa-2x" href={'https://twitter.com/'+profile.profiles[0].username}></a></li>
+                    <li><a className="fa fa-github fa-2x" href={'https://github.com/'+profile.profiles[1].username}></a></li>
                   </ul>
                 </div>
     },

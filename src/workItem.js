@@ -23,6 +23,8 @@ var WorkItem = React.createClass({
           <div className="workItem">
             <h3>{this.props.workItemData.position}, <span>{this.props.workItemData.company}</span></h3>
             <p class="workDates">{this.getWorkDates()}</p>
+            <p>{this.props.workItemData.summary}</p>
+            <p>{this.props.workItemData.highlights}</p>
           </div>
       )
   }

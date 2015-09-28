@@ -26,12 +26,22 @@ var Resume = React.createClass({
           var education = this.state.jsonObj.education;
           var skills = this.state.jsonObj.skills;
           return (
-              <div>
-                <Profile profileData={profile} />
-                <About aboutData={about} />
-                <Work workData={work} />
-                <Education educationData={education} />
-                <Skills skillsData={skills} />
+              <div className="container">
+                <div className="row">
+                  <aside className="col-md-4">
+                    <div className="inner">
+                      <Profile profileData={profile} />
+                    </div>
+                  </aside>
+                  <main className="col-md-8">
+                    <div className="inner">
+                      <About aboutData={about} />
+                      <Work workData={work} />
+                      <Education educationData={education} />
+                      <Skills skillsData={skills} />
+                    </div>
+                  </main>
+                </div>
               </div>
           )
         }else{

@@ -8,7 +8,7 @@ var About = React.createClass({
 
   render: function() {
       return (
-          <div className="about">{this.props.aboutData}</div>
+          <div className="about"><h2>About</h2><div>{this.props.aboutData}</div></div>
       )
   }
 

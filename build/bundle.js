@@ -12,7 +12,16 @@ var About = React.createClass({
         return React.createElement(
             "div",
             { className: "about" },
-            this.props.aboutData
+            React.createElement(
+                "h2",
+                null,
+                "About"
+            ),
+            React.createElement(
+                "div",
+                null,
+                this.props.aboutData
+            )
         );
     }
 
@@ -21,48 +30,68 @@ var About = React.createClass({
 
 var Resume = React.createClass({
 
-    displayName: "Resume",
+  displayName: "Resume",
 
-    getInitialState: function getInitialState() {
-        return {
-            jsonObj: null
-        };
-    },
+  getInitialState: function getInitialState() {
+    return {
+      jsonObj: null
+    };
+  },
 
-    componentDidMount: function componentDidMount() {
-        $.get(this.props.source, (function (result) {
-            if (this.isMounted()) {
-                // this.setState({jsonObj: JSON.parse(result)});
-                this.setState({ jsonObj: result });
-            }
-        }).bind(this));
-    },
+  componentDidMount: function componentDidMount() {
+    $.get(this.props.source, (function (result) {
+      if (this.isMounted()) {
+        // this.setState({jsonObj: JSON.parse(result)});
+        this.setState({ jsonObj: result });
+      }
+    }).bind(this));
+  },
 
-    render: function render() {
-        if (this.state.jsonObj) {
-            // console.log(this.state.jsonObj.basics);
-            var profile = this.state.jsonObj.basics;
-            var about = profile.summary;
-            var work = this.state.jsonObj.work;
-            var education = this.state.jsonObj.education;
-            var skills = this.state.jsonObj.skills;
-            return React.createElement(
-                "div",
-                null,
-                React.createElement(Profile, { profileData: profile }),
-                React.createElement(About, { aboutData: about }),
-                React.createElement(Work, { workData: work }),
-                React.createElement(Education, { educationData: education }),
-                React.createElement(Skills, { skillsData: skills })
-            );
-        } else {
-            return React.createElement(
-                "p",
-                null,
-                "Loading"
-            );
-        }
+  render: function render() {
+    if (this.state.jsonObj) {
+      // console.log(this.state.jsonObj.basics);
+      var profile = this.state.jsonObj.basics;
+      var about = profile.summary;
+      var work = this.state.jsonObj.work;
+      var education = this.state.jsonObj.education;
+      var skills = this.state.jsonObj.skills;
+      return React.createElement(
+        "div",
+        { className: "container" },
+        React.createElement(
+          "div",
+          { className: "row" },
+          React.createElement(
+            "aside",
+            { className: "col-md-4" },
+            React.createElement(
+              "div",
+              { className: "inner" },
+              React.createElement(Profile, { profileData: profile })
+            )
+          ),
+          React.createElement(
+            "main",
+            { className: "col-md-8" },
+            React.createElement(
+              "div",
+              { className: "inner" },
+              React.createElement(About, { aboutData: about }),
+              React.createElement(Work, { workData: work }),
+              React.createElement(Education, { educationData: education }),
+              React.createElement(Skills, { skillsData: skills })
+            )
+          )
+        )
+      );
+    } else {
+      return React.createElement(
+        "p",
+        null,
+        "Loading"
+      );
     }
+  }
 });
 
 React.render(React.createElement(Resume, { source: "resume.json" }), document.getElementById('reactjson'));
@@ -138,24 +167,26 @@ var Profile = React.createClass({
             React.createElement(
                 "div",
                 { className: "profileImg" },
-                React.createElement("img", { src: profile.picture, width: "200" })
+                React.createElement("img", { className: "img-circle center-block", src: profile.picture, width: "200" })
             ),
             React.createElement(
                 "h1",
-                null,
+                { className: "text-center" },
                 profile.name
             ),
             React.createElement(
                 "h2",
-                null,
+                { className: "text-center" },
                 profile.label
             ),
+            React.createElement("div", { className: "divider" }),
             React.createElement(
                 "ul",
-                null,
+                { className: "list-unstyled contact-links" },
                 React.createElement(
                     "li",
                     null,
+                    React.createElement("i", { className: "fa fa-lg fa-location-arrow" }),
                     profile.location.city,
                     ", ",
                     profile.location.region,
@@ -165,34 +196,23 @@ var Profile = React.createClass({
                 React.createElement(
                     "li",
                     null,
-                    profile.phone
-                ),
-                React.createElement(
-                    "li",
-                    null,
+                    React.createElement("i", { className: "fa fa-lg fa-envelope" }),
                     profile.email
                 )
             ),
+            React.createElement("div", { className: "divider" }),
             React.createElement(
                 "ul",
-                { className: "profileLinks" },
+                { className: "profileLinks list-inline" },
                 React.createElement(
                     "li",
                     null,
-                    React.createElement(
-                        "a",
-                        { href: 'https://twitter.com/' + profile.profiles[0].username },
-                        profile.profiles[0].network
-                    )
+                    React.createElement("a", { className: "fa fa-twitter fa-2x", href: 'https://twitter.com/' + profile.profiles[0].username })
                 ),
                 React.createElement(
                     "li",
                     null,
-                    React.createElement(
-                        "a",
-                        { href: 'https://github.com/' + profile.profiles[1].username },
-                        profile.profiles[1].network
-                    )
+                    React.createElement("a", { className: "fa fa-github fa-2x", href: 'https://github.com/' + profile.profiles[1].username })
                 )
             )
         );
@@ -235,7 +255,11 @@ var Skills = React.createClass({
       return React.createElement(
         "li",
         null,
-        item
+        React.createElement(
+          "span",
+          { className: "label label-success" },
+          item
+        )
       );
     });
 
@@ -249,7 +273,7 @@ var Skills = React.createClass({
       ),
       React.createElement(
         "ul",
-        null,
+        { className: "skills-list list-inline" },
         getSkills
       )
     );
@@ -338,6 +362,16 @@ var WorkItem = React.createClass({
         "p",
         { "class": "workDates" },
         this.getWorkDates()
+      ),
+      React.createElement(
+        "p",
+        null,
+        this.props.workItemData.summary
+      ),
+      React.createElement(
+        "p",
+        null,
+        this.props.workItemData.highlights
       )
     );
   }
