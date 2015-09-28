@@ -36,6 +36,6 @@ var Resume = React.createClass({
 });
 
 React.render(
-  React.createElement(Resume, {source: "resume.json"}),
+  <Resume source={resume.json} />,
   document.getElementById('reactjson')
 );
