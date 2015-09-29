@@ -8,7 +8,10 @@ var About = React.createClass({
 
   render: function() {
       return (
-          <div className="about"><h2>About</h2><div>{this.props.aboutData}</div></div>
+          <section className="about">
+            <h2 className="text-uppercase"><i className="fa fa-lg fa-user"></i> About</h2>
+            <div>{this.props.aboutData}</div>
+          </section>
       )
   }
 

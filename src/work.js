@@ -19,7 +19,10 @@ var Work = React.createClass({
 
   render: function() {
       return (
-          <div className="work"><h2>Work experience</h2>{this.getWorkExperience()}</div>
+          <section className="work">
+            <h2 className="text-uppercase"><i className="fa fa-lg fa-building"></i> Work experience</h2>
+            {this.getWorkExperience()}
+          </section>
       )
   }
 

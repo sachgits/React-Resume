@@ -10,12 +10,13 @@ var About = React.createClass({
 
     render: function render() {
         return React.createElement(
-            "div",
+            "section",
             { className: "about" },
             React.createElement(
                 "h2",
-                null,
-                "About"
+                { className: "text-uppercase" },
+                React.createElement("i", { className: "fa fa-lg fa-user" }),
+                " About"
             ),
             React.createElement(
                 "div",
@@ -78,8 +79,8 @@ var Resume = React.createClass({
               { className: "inner" },
               React.createElement(About, { aboutData: about }),
               React.createElement(Work, { workData: work }),
-              React.createElement(Education, { educationData: education }),
-              React.createElement(Skills, { skillsData: skills })
+              React.createElement(Skills, { skillsData: skills }),
+              React.createElement(Education, { educationData: education })
             )
           )
         )
@@ -135,12 +136,13 @@ var Education = React.createClass({
       );
     });
     return React.createElement(
-      "div",
+      "section",
       { className: "education" },
       React.createElement(
         "h2",
-        null,
-        "Education"
+        { className: "text-uppercase" },
+        React.createElement("i", { className: "fa fa-lg fa-mortar-board" }),
+        " Education"
       ),
       getEducation
     );
@@ -182,7 +184,7 @@ var Profile = React.createClass({
             React.createElement("div", { className: "divider" }),
             React.createElement(
                 "ul",
-                { className: "list-unstyled contact-links" },
+                { className: "list-unstyled contact-links text-center" },
                 React.createElement(
                     "li",
                     null,
@@ -197,13 +199,17 @@ var Profile = React.createClass({
                     "li",
                     null,
                     React.createElement("i", { className: "fa fa-lg fa-envelope" }),
-                    profile.email
+                    React.createElement(
+                        "a",
+                        { href: "mailto:{profile.email}" },
+                        profile.email
+                    )
                 )
             ),
             React.createElement("div", { className: "divider" }),
             React.createElement(
                 "ul",
-                { className: "profileLinks list-inline" },
+                { className: "profileLinks list-inline text-center" },
                 React.createElement(
                     "li",
                     null,
@@ -214,6 +220,30 @@ var Profile = React.createClass({
                     null,
                     React.createElement("a", { className: "fa fa-github fa-2x", href: 'https://github.com/' + profile.profiles[1].username })
                 )
+            ),
+            React.createElement("div", { className: "divider" }),
+            React.createElement(
+                "p",
+                null,
+                "I built this site with ",
+                React.createElement(
+                    "a",
+                    { href: "https://facebook.github.io/react/" },
+                    "React"
+                ),
+                " components and a ",
+                React.createElement(
+                    "a",
+                    { href: "https://jsonresume.org/schema/" },
+                    "JSON Resume Schema"
+                ),
+                ". The full source code can be found in ",
+                React.createElement(
+                    "a",
+                    { href: "https://github.com/freaksauce/React-Resume" },
+                    "my Github repo"
+                ),
+                "."
             )
         );
     },
@@ -264,12 +294,13 @@ var Skills = React.createClass({
     });
 
     return React.createElement(
-      "div",
+      "section",
       { className: "skills" },
       React.createElement(
         "h2",
-        null,
-        "Skills"
+        { className: "text-uppercase" },
+        React.createElement("i", { className: "fa fa-lg fa-code" }),
+        " Skills"
       ),
       React.createElement(
         "ul",
@@ -303,12 +334,13 @@ var Work = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "div",
+      "section",
       { className: "work" },
       React.createElement(
         "h2",
-        null,
-        "Work experience"
+        { className: "text-uppercase" },
+        React.createElement("i", { className: "fa fa-lg fa-building" }),
+        " Work experience"
       ),
       this.getWorkExperience()
     );
@@ -360,7 +392,7 @@ var WorkItem = React.createClass({
       ),
       React.createElement(
         "p",
-        { "class": "workDates" },
+        { className: "workDates" },
         this.getWorkDates()
       ),
       React.createElement(

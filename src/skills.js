@@ -17,7 +17,10 @@ var Skills = React.createClass({
     });
 
   	return (
-  	  <div className="skills"><h2>Skills</h2><ul className="skills-list list-inline">{getSkills}</ul></div>
+  	  <section className="skills">
+        <h2 className="text-uppercase"><i className="fa fa-lg fa-code"></i> Skills</h2>
+        <ul className="skills-list list-inline">{getSkills}</ul>
+      </section>
   	)
   }
 

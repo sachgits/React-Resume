@@ -15,15 +15,17 @@ var Profile = React.createClass({
                   <h1 className="text-center">{profile.name}</h1>
                   <h2 className="text-center">{profile.label}</h2>
                   <div className="divider"></div>
-                  <ul className="list-unstyled contact-links">
+                  <ul className="list-unstyled contact-links text-center">
                     <li><i className="fa fa-lg fa-location-arrow"></i>{profile.location.city}, {profile.location.region}, {profile.location.countryCode}</li>
-                    <li><i className="fa fa-lg fa-envelope"></i>{profile.email}</li>
+                    <li><i className="fa fa-lg fa-envelope"></i><a href="mailto:{profile.email}">{profile.email}</a></li>
                   </ul>
                   <div className="divider"></div>
-                  <ul className="profileLinks list-inline">
+                  <ul className="profileLinks list-inline text-center">
                     <li><a className="fa fa-twitter fa-2x" href={'https://twitter.com/'+profile.profiles[0].username}></a></li>
                     <li><a className="fa fa-github fa-2x" href={'https://github.com/'+profile.profiles[1].username}></a></li>
                   </ul>
+                  <div className="divider"></div>
+                  <p>I built this site with <a href="https://facebook.github.io/react/">React</a> components and a <a href="https://jsonresume.org/schema/">JSON Resume Schema</a>. The full source code can be found in <a href="https://github.com/freaksauce/React-Resume">my Github repo</a>.</p>
                 </div>
     },
 

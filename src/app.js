@@ -37,8 +37,8 @@ var Resume = React.createClass({
                     <div className="inner">
                       <About aboutData={about} />
                       <Work workData={work} />
-                      <Education educationData={education} />
                       <Skills skillsData={skills} />
+                      <Education educationData={education} />
                     </div>
                   </main>
                 </div>
