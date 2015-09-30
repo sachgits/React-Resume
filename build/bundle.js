@@ -2,29 +2,29 @@
 
 var About = React.createClass({
 
-  displayName: "About",
+    displayName: "About",
 
-  propTypes: {
-    aboutData: React.PropTypes.object
-  },
+    propTypes: {
+        aboutData: React.PropTypes.object
+    },
 
-  render: function render() {
-    return React.createElement(
-      "section",
-      { className: "about" },
-      React.createElement(
-        "h2",
-        { className: "text-uppercase" },
-        React.createElement("i", { className: "fa fa-lg fa-user" }),
-        " About"
-      ),
-      React.createElement(
-        "div",
-        null,
-        this.props.aboutData
-      )
-    );
-  }
+    render: function render() {
+        return React.createElement(
+            "section",
+            { className: "about" },
+            React.createElement(
+                "h2",
+                { className: "text-uppercase" },
+                React.createElement("i", { className: "fa fa-lg fa-user" }),
+                " About"
+            ),
+            React.createElement(
+                "div",
+                null,
+                this.props.aboutData
+            )
+        );
+    }
 
 });
 "use strict";
