@@ -19,12 +19,15 @@ var WorkItem = React.createClass({
   },
 
   render: function() {
+      var getHighlights = this.props.workItemData.highlights.map(function(item) {
+        return (<li>{item}</li>)
+      });
       return (
           <div className="workItem">
             <h3>{this.props.workItemData.position}, <span>{this.props.workItemData.company}</span></h3>
             <p className="workDates">{this.getWorkDates()}</p>
             <p>{this.props.workItemData.summary}</p>
-            <p>{this.props.workItemData.highlights}</p>
+            <ul>{getHighlights}</ul>
           </div>
       )
   }

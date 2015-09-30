@@ -2,29 +2,29 @@
 
 var About = React.createClass({
 
-    displayName: "About",
+  displayName: "About",
 
-    propTypes: {
-        aboutData: React.PropTypes.object
-    },
+  propTypes: {
+    aboutData: React.PropTypes.object
+  },
 
-    render: function render() {
-        return React.createElement(
-            "section",
-            { className: "about" },
-            React.createElement(
-                "h2",
-                { className: "text-uppercase" },
-                React.createElement("i", { className: "fa fa-lg fa-user" }),
-                " About"
-            ),
-            React.createElement(
-                "div",
-                null,
-                this.props.aboutData
-            )
-        );
-    }
+  render: function render() {
+    return React.createElement(
+      "section",
+      { className: "about" },
+      React.createElement(
+        "h2",
+        { className: "text-uppercase" },
+        React.createElement("i", { className: "fa fa-lg fa-user" }),
+        " About"
+      ),
+      React.createElement(
+        "div",
+        null,
+        this.props.aboutData
+      )
+    );
+  }
 
 });
 "use strict";
@@ -376,6 +376,13 @@ var WorkItem = React.createClass({
   },
 
   render: function render() {
+    var getHighlights = this.props.workItemData.highlights.map(function (item) {
+      return React.createElement(
+        "li",
+        null,
+        item
+      );
+    });
     return React.createElement(
       "div",
       { className: "workItem" },
@@ -401,9 +408,9 @@ var WorkItem = React.createClass({
         this.props.workItemData.summary
       ),
       React.createElement(
-        "p",
+        "ul",
         null,
-        this.props.workItemData.highlights
+        getHighlights
       )
     );
   }
